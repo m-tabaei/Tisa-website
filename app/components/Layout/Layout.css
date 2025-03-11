@@ -1,9 +1,18 @@
 .main-content {
-  padding-top: 70px; /* Same as header height */
+  padding-top: 100px; /* Increased padding to prevent content from going under header */
+  min-height: calc(100vh - 70px); /* Ensure minimum height for content */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* RTL Support */
+.rtl .main-content {
+  direction: rtl;
 }
 
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 70px;
+    padding-top: 90px; /* Adjusted padding for mobile */
   }
-} 
+}

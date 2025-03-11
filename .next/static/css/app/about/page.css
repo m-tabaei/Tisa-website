@@ -74,7 +74,7 @@
 
 .header {
   position: fixed;
-  top: -5px;
+  top: -20px;
   left: 0;
   width: 100%;
   height: 70px;
@@ -271,6 +271,10 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
   .nav-menu {
     position: fixed;
     top: 0;
@@ -373,6 +377,39 @@
   /* Adjust the top padding of menu to ensure all items are visible */
   .nav-menu {
     padding-top: 70px;
+  }
+
+  .hamburger {
+    display: flex;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1003;
+  }
+
+  .language-switcher {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 1003;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .overlay.active {
+    display: block;
+    opacity: 1;
   }
 }
 
