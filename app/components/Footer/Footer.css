@@ -1,0 +1,269 @@
+.footer {
+  background-color: var(--dark-color);
+  color: #fff;
+  padding: 4rem 0 2rem;
+  position: relative;
+  margin-top: 4rem;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.footer .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.rtl .footer-section h3::after {
+  left: auto;
+  right: 0;
+}
+
+.footer-section:hover h3::after {
+  width: 60px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 1rem;
+}
+
+.footer-section ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.rtl .footer-section ul li a {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+.footer-section ul li a::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.rtl .footer-section ul li a::before {
+  content: "←";
+  left: auto;
+  right: 0;
+}
+
+.footer-section ul li a:hover {
+  color: var(--accent-color);
+  padding-left: 1.8rem;
+}
+
+.rtl .footer-section ul li a:hover {
+  padding-left: 0;
+  padding-right: 1.8rem;
+}
+
+.footer-section ul li a:hover::before {
+  transform: translateY(-50%) translateX(5px);
+}
+
+.rtl .footer-section ul li a:hover::before {
+  transform: translateY(-50%) translateX(-5px);
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-links .social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+.social-links .social-icon:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  transition: all 0.3s ease;
+}
+
+/* Specific hover colors for each platform */
+.social-icon:hover .telegram-icon {
+  fill: #0088cc;
+}
+
+.social-icon:hover .whatsapp-icon {
+  fill: #25d366;
+}
+
+.social-icon:hover .instagram-icon {
+  fill: #e4405f;
+}
+
+/* Responsive adjustments for social icons */
+@media (max-width: 768px) {
+  .social-links .social-icon {
+    width: 35px;
+    height: 35px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .social-links .social-icon {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+  }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .footer .container {
+    padding: 0 1.5rem;
+  }
+
+  .footer-content {
+    gap: 2rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 2.5rem 0 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .footer .container {
+    padding: 0 1rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .rtl .footer-section h3::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,130 @@
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.catalog-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.catalog-thumbnail {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: #f0f0f0;
+}
+
+.catalog-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-pages {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.download-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.catalog-card:hover .download-button {
+  opacity: 1;
+  bottom: 30px;
+}
+
+.download-button:hover {
+  background: var(--secondary-color);
+}
+
+.download-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.catalog-info {
+  padding: 1.5rem;
+}
+
+.catalog-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.catalog-info p {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Hover Effects */
+.catalog-card:hover .catalog-thumbnail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .catalog-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .download-button {
+    opacity: 1;
+    bottom: 30px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+
+  .download-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .catalog-info {
+    padding: 1rem;
+  }
+
+  .catalog-info h3 {
+    font-size: 1.1rem;
+  }
+}
