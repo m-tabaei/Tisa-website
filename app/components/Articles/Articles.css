@@ -1,12 +1,6 @@
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem 0;
-}
-
 .section {
   padding: 4rem 0;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
 }
 
 .container {
@@ -20,20 +14,229 @@
   margin-bottom: 3rem;
   color: var(--primary-color);
   font-size: 2.5rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+.article-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 25px;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.article-item {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.article-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.article-image {
+  position: relative;
+  width: 98%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.article-img {
+  object-fit: fill;
+  transition: transform 0.5s ease;
+}
+
+.article-item:hover .article-img {
+  transform: scale(1.1);
+}
+
+.article-category {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rtl .article-category {
+  right: auto;
+  left: 15px;
+}
+
+.article-content {
+  padding: 25px;
+  position: relative;
+}
+
+.article-date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.article-content h3 {
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.article-content .description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.read-more-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
 }
 
 /* RTL Support */
-.rtl {
-  direction: rtl;
+.rtl .article-content {
+  text-align: right;
+}
+
+.rtl .article-date {
+  text-align: right;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .articles-grid {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 3rem 0;
   }
 
   .section-title {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
-} 
+
+  .article-filters {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .filter-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .article-content {
+    padding: 20px;
+  }
+
+  .article-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .article-image {
+    height: 200px;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article-item {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.article-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.article-item:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.article-item:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.article-item:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.article-item:nth-child(6) {
+  animation-delay: 1s;
+}
