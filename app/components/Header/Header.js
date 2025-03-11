@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
@@ -9,6 +9,8 @@ import "./Header.css";
 const Header = ({ language = "en", onLanguageChange }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const hamburgerRef = useRef(null);
   const pathname = usePathname();
   const t = translations[language];
 
@@ -28,8 +30,26 @@ const Header = ({ language = "en", onLanguageChange }) => {
       setIsVisible(true);
     }, 500);
 
-    return () => clearTimeout(timer);
-  }, []);
+    const handleClickOutside = (event) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        !hamburgerRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   const isActive = (href) => {
     if (href === "/") {
@@ -52,7 +72,12 @@ const Header = ({ language = "en", onLanguageChange }) => {
         isVisible ? "visible" : "hidden"
       } ${isMenuOpen ? "menu-open" : ""}`}
     >
-      <button className="hamburger" onClick={toggleMenu}>
+      <button
+        className="hamburger"
+        onClick={toggleMenu}
+        ref={hamburgerRef}
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+      >
         <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
       </button>
 
@@ -61,7 +86,7 @@ const Header = ({ language = "en", onLanguageChange }) => {
         onLanguageChange={onLanguageChange}
       />
 
-      <nav className={`nav-menu ${isMenuOpen ? "open" : ""}`}>
+      <nav className={`nav-menu ${isMenuOpen ? "open" : ""}`} ref={menuRef}>
         <ul>
           {menuItems.map((item, index) => (
             <li
