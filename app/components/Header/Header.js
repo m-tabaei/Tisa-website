@@ -18,6 +18,7 @@ const Header = ({ language = "en", onLanguageChange }) => {
     { href: "/services", text: t.services, id: "services" },
     { href: "/videos", text: t.videos, id: "videos" },
     { href: "/catalog", text: t.catalog, id: "catalog" },
+    { href: "/articles", text: t.articles, id: "articles" },
     { href: "/representation", text: t.representation, id: "representation" },
     { href: "/contact", text: t.contactUs, id: "contact" },
   ];

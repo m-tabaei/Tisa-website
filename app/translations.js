@@ -107,6 +107,10 @@ export const translations = {
     emailAddress: "info@tisagroup.com",
     workingHours: "Working Hours",
     workingTime: "Monday - Friday: 9:00 AM - 6:00 PM",
+
+    // Articles
+    articles: "Articles",
+    comingSoon: "Articles section coming soon...",
   },
   fa: {
     // Header
@@ -213,5 +217,9 @@ export const translations = {
     emailAddress: "info@tisagroup.com",
     workingHours: "ساعات کاری",
     workingTime: "شنبه تا چهارشنبه: ۹:۰۰ تا ۱۸:۰۰",
+
+    // Articles
+    articles: "مقالات",
+    comingSoon: "بخش مقالات به زودی...",
   },
 };

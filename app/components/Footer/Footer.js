@@ -1,27 +1,40 @@
-import React from 'react';
-import Link from 'next/link';
-import { translations } from '../../translations';
-import './Footer.css';
+"use client";
+import React from "react";
+import Link from "next/link";
+import { translations } from "../../translations";
+import "./Footer.css";
 
-const Footer = ({ language = 'fa' }) => {
+const Footer = ({ language = "fa" }) => {
   const t = translations[language];
 
   return (
-    <footer className={`footer ${language === 'fa' ? 'rtl' : ''}`}>
+    <footer className={`footer ${language === "fa" ? "rtl" : ""}`}>
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
             <h3>{t.quickLinks}</h3>
             <ul>
-              <li><Link href="/about">{t.aboutUs}</Link></li>
-              <li><Link href="/services">{t.services}</Link></li>
-              <li><Link href="/videos">{t.videos}</Link></li>
-              <li><Link href="/catalog">{t.catalog}</Link></li>
-              <li><Link href="/representation">{t.representation}</Link></li>
-              <li><Link href="/contact">{t.contactUs}</Link></li>
+              <li>
+                <Link href="/about">{t.aboutUs}</Link>
+              </li>
+              <li>
+                <Link href="/services">{t.services}</Link>
+              </li>
+              <li>
+                <Link href="/videos">{t.videos}</Link>
+              </li>
+              <li>
+                <Link href="/catalog">{t.catalog}</Link>
+              </li>
+              <li>
+                <Link href="/representation">{t.representation}</Link>
+              </li>
+              <li>
+                <Link href="/contact">{t.contactUs}</Link>
+              </li>
             </ul>
           </div>
-          
+
           <div className="footer-section">
             <h3>{t.contactInfo}</h3>
             <p>{t.address}</p>
@@ -70,11 +83,14 @@ const Footer = ({ language = 'fa' }) => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Created by: M.Tabaei  {t.allRightsReserved}</p>
+          <p>
+            &copy; {new Date().getFullYear()} Created by: M.Tabaei{" "}
+            {t.allRightsReserved}
+          </p>
         </div>
       </div>
     </footer>
   );
 };
 
-export default Footer; 
+export default Footer;
